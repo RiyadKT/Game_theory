@@ -1,6 +1,8 @@
 from snake_functions import *
 import math
 
+
+#Function used to find destination cell in A*
 def find_food(gamestate):
     mat=gamestate.tab
     for i in range(n):
@@ -10,14 +12,18 @@ def find_food(gamestate):
     return "pas trouvé"
 
 
-
+#Euclidian
 def dist(x,y):
     a,b=x
     c,d=y
     return np.sqrt((c-a)**2+(d-b)**2)
 
+
+#Possibilities for snake head
 mov_list=[(-1,0),(1,0),(0,1),(0,-1)]
 
+
+#A* algorithm,using list data structure, could have used heap, see swap game project for example.
 def find_shortest_path(gamestate):
     x0,y0=gamestate.snake_list[0]
     tab_dist={(x0,y0):0}
@@ -71,8 +77,8 @@ def next_move(gamestate,path):
     gamestate.dir=path.pop(0)
 
         
-            
-                    
+
+#Displaying and running.          
 
 run=True
 jeu=game(np.full((n,m),"X"),(1,0),[],0)
